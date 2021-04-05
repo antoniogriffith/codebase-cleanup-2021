@@ -41,7 +41,7 @@ if u == "paper"
     if (c == "scissors"):
         print("The user wins")
 
-if(u == "scissors")
+if u == "scissors"
     if (c == "rock"):
         print("The computer wins")
     if (c == "paper":
