@@ -27,7 +27,6 @@ def lookup_product(product_id, all_products):
         return None
 
 
-
 # PREVENT ALL THE APP CODE FROM BEING IMPORTED 
 # BUT STILL BE ABLE TO RUN IT FROM THE COMMAND LINE LIKE THIS
 
@@ -60,7 +59,7 @@ if __name__ == "__main__":
     # PRINT RECEIPT
     
     print("---------")
-    print("CHECKOUT AT: " + str(checkout_at.strftime("%Y-%M-%d %H:%m:%S")))
+    print("CHECKOUT AT: " + str(checkout_at.strftime("%Y-%m-%d %I:%m:%S %p")))
     print("---------")
     for p in selected_products:
         print("SELECTED PRODUCT: " + p["name"] + "   " + format_usd(p["price"]))
@@ -75,7 +74,7 @@ if __name__ == "__main__":
     
     # WRITE RECEIPT TO FILE
     
-    receipt_id = checkout_at.strftime('%Y-%M-%d-%H-%m-%S')
+    receipt_id = checkout_at.strftime('%Y-%m-%d %I:%m:%S %p')
     receipt_filepath = os.path.join(os.path.dirname(__file__), "..", "receipts", f"{receipt_id}.txt")
     
     with open(receipt_filepath, "w") as receipt_file:
@@ -84,9 +83,9 @@ if __name__ == "__main__":
             receipt_file.write("\nSELECTED PRODUCT: " + p["name"] + "   " + format_usd(p["price"]))
     
         receipt_file.write("\n---------")
-        receipt_file.write(f"\nSUBTOTAL: {subtotal}")
-        receipt_file.write(f"\nTAX: {format_usd(subtotal * 0.875)}")
-        receipt_file.write(f"\nTOTAL: {format_usd((subtotal * 0.875) + subtotal)}")
+        receipt_file.write(f"\nSUBTOTAL: {format_usd(subtotal)}")
+        receipt_file.write(f"\nTAX: {format_usd(subtotal * 0.0875)}")
+        receipt_file.write(f"\nTOTAL: {format_usd((subtotal * 0.0875) + subtotal)}")
         receipt_file.write("\n---------")
         receipt_file.write("\nTHANK YOU! PLEASE COME AGAIN SOON!")
         receipt_file.write("\n---------")
