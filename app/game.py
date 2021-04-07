@@ -5,6 +5,11 @@ from random import choice
 # USER SELECTION
 #
 def determine_winner(u, c):
+
+    '''
+        Params: Two Strings Choice 1 and Choice 2
+                Valid Options must be one of "Rock", "Paper" or "Scissors"
+    '''
     
     winners = { "rock": "scissors", "scissors": "paper", "paper": "rock"}
     choice2Win = winners[u]
@@ -24,7 +29,7 @@ def determine_winner(u, c):
 VALID_OPTIONS = ["rock", "paper", "scissors"]
 
 if __name__ == "__main__":
-    
+
     u = input("Please choose one of 'Rock', 'Paper', or 'Scissors': ").lower()
     print("USER CHOICE:", u)
     if u not in VALID_OPTIONS:
